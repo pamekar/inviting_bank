@@ -95,7 +95,7 @@
 
     <div class="md:flex">
         <!-- Main Content -->
-        <main class="flex-1 pb-16 md:pb-0">
+        <main class="flex-1 pb-16 md:pb-0 mb-16">
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
