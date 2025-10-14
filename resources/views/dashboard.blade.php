@@ -2,9 +2,14 @@
     <div class="p-4 sm:p-6 lg:p-8">
         <div class="max-w-7xl mx-auto">
             <!-- Welcome Header -->
-            <div class="mb-8">
-                <h1 class="text-2xl font-bold text-gray-800">Hello, {{ Auth::user()->name }}</h1>
-                <p class="text-gray-500">Welcome back to your dashboard.</p>
+            <div class="mb-8 flex justify-between items-center">
+                <button @click="sidebarOpen = !sidebarOpen" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                <div class="text-right">
+                    <h1 class="text-2xl font-bold text-gray-800">Hello, {{ Auth::user()->name }}</h1>
+                    <p class="text-gray-500">Welcome back to your dashboard.</p>
+                </div>
             </div>
 
             <!-- Main Balance Card -->
