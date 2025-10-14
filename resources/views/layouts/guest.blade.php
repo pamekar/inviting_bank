@@ -26,11 +26,7 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
             <a href="/" class="flex items-center space-x-2">
-                <svg class="h-8 w-8 text-purple-700" viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
-                </svg>
-                <span class="text-2xl font-bold text-purple-700">Inviting Bank</span>
+                <img src="{{ asset('img/logo.png') }}" alt="Inviting Bank Logo" class="h-16">
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="{{ route('about') }}" class="text-gray-600 hover:text-purple-700">About Us</a>
@@ -75,7 +71,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-bold">Inviting Bank</h3>
+                    <img src="{{ asset('img/logo.png') }}" alt="Inviting Bank Logo" class="h-16">
                     <p class="mt-2 text-gray-400">Your partner in growth.</p>
                 </div>
                 <div>
