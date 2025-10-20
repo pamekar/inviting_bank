@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\BillPaymentResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UtilityPayment;
@@ -9,22 +10,12 @@ use App\Models\Transaction;
 use App\Models\Account;
 use App\Models\PendingAuthorization;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\BillPaymentRequest;
 
 class BillPaymentController extends Controller
 {
-    public function pay(Request $request)
+    public function pay(BillPaymentRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'account_id' => 'required|exists:accounts,id',
-            'amount' => 'required|numeric|min:1',
-            'biller' => 'required|string',
-            'customer_reference' => 'required|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
-
         $account = Account::where('user_id', auth()->id())->findOrFail($request->account_id);
 
         if ($account->balance < $request->amount) {
@@ -52,7 +43,7 @@ class BillPaymentController extends Controller
             'expires_at' => now()->addMinutes(15),
         ]);
 
-        return response()->json($authorization, 201);
+        return new BillPaymentResource($authorization);
     }
 
     public function index()
