@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\BillPaymentController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\TwoFactorAuthController;
 use App\Http\Controllers\Api\AdminController;
+use App\Http\Controllers\Api\ThirdPartyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,5 +119,12 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('reports', [AdminController::class, 'reports']);
+    });
+
+    Route::prefix('whatsapp')->group(function () {
+        Route::post('balance', [WhatsAppAPIController::class, 'getBalance']);
+        Route::post('transactions', [WhatsAppAPIController::class, 'getTransactionHistory']);
+        Route::post('transfer', [WhatsAppAPIController::class, 'transfer']);
+        Route::post('bill-payment', [WhatsAppAPIController::class, 'billPayment']);
     });
 });
