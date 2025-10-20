@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\AccountBalanceResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Account;
@@ -43,8 +44,8 @@ class AccountController extends Controller
 
     public function balance($id)
     {
-        $account = Account::where('user_id', auth()->id())->findOrFail($id);
-        return response()->json(['balance' => $account->balance]);
+        $account = Account::with('user')->where('user_id', auth()->id())->findOrFail($id);
+        return new AccountBalanceResource($account);
     }
 
     public function statements($id)
