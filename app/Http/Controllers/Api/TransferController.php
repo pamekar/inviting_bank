@@ -2,30 +2,21 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\PendingAuthorizationResource;
+use App\Http\Requests\TransferRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Transfer;
 use App\Models\Transaction;
 use App\Models\Account;
 use App\Models\Beneficiary;
 use App\Models\PendingAuthorization;
-use Illuminate\Support\Facades\Validator;
 
 class TransferController extends Controller
 {
-    public function store(Request $request)
+    public function store(TransferRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'source_account_id'' => 'required|exists:accounts,id',
-            'destination_account_id' => 'required|exists:accounts,id',
-            'amount' => 'required|numeric|min:1',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
-
         $sourceAccount = Account::where('user_id', auth()->id())->findOrFail($request->source_account_id);
+        $destinationAccount = Account::where('account_number', $request->destination_account_number)->firstOrFail();
 
         if ($sourceAccount->balance < $request->amount) {
             return response()->json(['message' => 'Insufficient funds'], 400);
@@ -41,7 +32,7 @@ class TransferController extends Controller
         $transfer = Transfer::create([
             'transaction_id' => $transaction->id,
             'source_account_id' => $sourceAccount->id,
-            'destination_account_id' => $request->destination_account_id,
+            'destination_account_id' => $destinationAccount->id,
         ]);
 
         $authorization = PendingAuthorization::create([
@@ -52,7 +43,7 @@ class TransferController extends Controller
             'expires_at' => now()->addMinutes(15),
         ]);
 
-        return response()->json($authorization, 201);
+        return new PendingAuthorizationResource($authorization);
     }
 
     public function index()
