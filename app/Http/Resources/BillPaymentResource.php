@@ -18,10 +18,6 @@ class BillPaymentResource extends JsonResource
         $description = 'A ' . str_replace('_', ' ', $this->authorization_type) . ' has been initiated and is awaiting authorization.';
         $description .= ' Biller: ' . $details->biller . ', Customer Reference: ' . $details->customer_reference . ', Amount: ' . $details->transaction->amount;
 
-        $chat_message = "A *bill payment* request has been initiated and requires your approval.\n\n";
-        $chat_message .= "*Biller:* {$details->biller}\n*Customer Reference:* {$details->customer_reference}\n*Amount:* *{$details->transaction->amount} USD*";
-        $chat_message .= "\n\n_This request will expire at {$this->expires_at}._";
-
         return [
             'id' => $this->id,
             'authorization_type' => $this->authorization_type,
@@ -29,6 +25,23 @@ class BillPaymentResource extends JsonResource
             'expires_at' => $this->expires_at,
             'status' => $this->status,
             'description' => $description,
+        ];
+    }
+
+    /**
+     * Get additional data that should be returned with the resource array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function with($request)
+    {
+        $details = json_decode($this->transaction_details);
+        $chat_message = "A *bill payment* request has been initiated and requires your approval.\n\n";
+        $chat_message .= "*Biller:* {$details->biller}\n*Customer Reference:* {$details->customer_reference}\n*Amount:* *{$details->transaction->amount} NGN*";
+        $chat_message .= "\n\n_This request will expire at {$this->expires_at}._";
+
+        return [
             'chat_message' => $chat_message,
         ];
     }

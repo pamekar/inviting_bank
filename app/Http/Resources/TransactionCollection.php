@@ -40,7 +40,7 @@ class TransactionCollection extends ResourceCollection
             $amount = number_format($transaction->amount, 2);
             $status = $transaction->status;
             $date = $transaction->created_at->format('M d, Y');
-            $chat_message .= "*- {$type}* of *{$amount} USD* (_{$status}_) on {$date}\n";
+            $chat_message .= "*- {$type}* of *₦{$amount}* (_{$status}_) on {$date}\n";
         });
 
         return [

@@ -62,7 +62,7 @@ class WhatsAppAPIController extends Controller
         $account = $user->accounts()->first();
         $limit = $request->input('limit', 10);
 
-        $transactions = $account->transactions()->latest()->take($limit)->get();
+        $transactions = $account->transactions()->latest()->take(min(10, $limit))->get();
 
         return new TransactionCollection($transactions);
     }
