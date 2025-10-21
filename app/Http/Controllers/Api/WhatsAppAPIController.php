@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use App\Http\Resources\AccountBalanceResource;
 use App\Http\Resources\TransactionResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 use App\Http\Requests\WhatsAppBillPaymentRequest;
 use App\Http\Requests\WhatsAppTransferRequest;
@@ -24,6 +24,7 @@ class WhatsAppAPIController extends Controller
 {
     public function getBalance(Request $request)
     {
+        Log::info('WhatsApp API: getBalance request received', ['request' => $request->all()]);
         $user = User::where('phone_number', $request->phone_number)->first();
 
         if (!$user) {
@@ -43,6 +44,7 @@ class WhatsAppAPIController extends Controller
 
     public function getTransactionHistory(Request $request)
     {
+        Log::info('WhatsApp API: getTransactionHistory request received', ['request' => $request->all()]);
         $user = User::where('phone_number', $request->phone_number)->first();
 
         if (!$user) {
@@ -65,6 +67,7 @@ class WhatsAppAPIController extends Controller
 
     public function transfer(WhatsAppTransferRequest $request)
     {
+        Log::info('WhatsApp API: transfer request received', ['request' => $request->all()]);
         $sourceUser = User::where('phone_number', $request->source_phone_number)->first();
 
         if (!$sourceUser) {
@@ -110,6 +113,7 @@ class WhatsAppAPIController extends Controller
 
     public function billPayment(WhatsAppBillPaymentRequest $request)
     {
+        Log::info('WhatsApp API: billPayment request received', ['request' => $request->all()]);
         $sourceUser = User::where('phone_number', $request->source_phone_number)->first();
 
         if (!$sourceUser) {
