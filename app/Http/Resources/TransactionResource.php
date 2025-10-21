@@ -20,6 +20,7 @@ class TransactionResource extends JsonResource
             'amount' => $this->amount,
             'status' => $this->status,
             'created_at' => $this->created_at,
+            'chat_message' => "Transaction Details:\n\n*Type:* {$this->type}\n*Amount:* *{$this->amount} USD*\n*Status:* _{$this->status}_\n*Date:* {$this->created_at->format('Y-m-d H:i:s')}",
         ];
     }
 }

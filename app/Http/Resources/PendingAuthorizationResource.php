@@ -23,6 +23,16 @@ class PendingAuthorizationResource extends JsonResource
             $description .= ' Biller: ' . $details->biller . ', Customer Reference: ' . $details->customer_reference . ', Amount: ' . $details->transaction->amount;
         }
 
+        $chat_message = "A *{$this->authorization_type}* request has been initiated and requires your approval.\n\n";
+
+        if ($this->authorization_type === 'transfer') {
+            $chat_message .= "*Source Account:* {$details->source_account_id}\n*Destination Account:* {$details->destination_account_id}\n*Amount:* *{$details->transaction->amount} USD*";
+        } elseif ($this->authorization_type === 'bill_payment') {
+            $chat_message .= "*Biller:* {$details->biller}\n*Customer Reference:* {$details->customer_reference}\n*Amount:* *{$details->transaction->amount} USD*";
+        }
+
+        $chat_message .= "\n\n_This request will expire at {$this->expires_at}._";
+
         return [
             'id' => $this->id,
             'authorization_type' => $this->authorization_type,
@@ -30,6 +40,7 @@ class PendingAuthorizationResource extends JsonResource
             'expires_at' => $this->expires_at,
             'status' => $this->status,
             'description' => $description,
+            'chat_message' => $chat_message,
         ];
     }
 }

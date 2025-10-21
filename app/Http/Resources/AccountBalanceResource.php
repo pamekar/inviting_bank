@@ -21,6 +21,7 @@ class AccountBalanceResource extends JsonResource
             'balance' => $this->balance,
             'currency' => 'USD', // Assuming USD for now, you can make this dynamic
             'description' => 'The current balance for the specified account.',
+            'chat_message' => "Hello *{$this->user->name}*!\n\nYour account balance is:\n\n*Account Number:* {$this->account_number}\n*Balance:* *{$this->balance} USD*",
         ];
     }
 }
