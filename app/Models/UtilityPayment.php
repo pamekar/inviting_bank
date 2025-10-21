@@ -9,6 +9,12 @@ class UtilityPayment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'transaction_id',
+        'biller',
+        'customer_reference',
+    ];
+
     public function transaction()
     {
         return $this->belongsTo(Transaction::class);

@@ -1,0 +1,45 @@
+### Get Account Balance
+POST http://inviting.test/api/whatsapp/balance
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "phone_number": "07038606396"
+}
+
+### Get Transaction History
+POST http://inviting.test/api/whatsapp/transactions
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "phone_number": "07038606396",
+    "limit": 5
+}
+
+### Initiate a Transfer
+POST http://inviting.test/api/whatsapp/transfer
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "source_phone_number": "07038606396",
+    "destination_account_number": "1234567890",
+    "amount": 100.50
+}
+
+### Initiate a Bill Payment
+POST http://inviting.test/api/whatsapp/bill-payment
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{token}}
+
+{
+    "source_phone_number": "07038606396",
+    "biller": "EKEDC",
+    "customer_reference": "1234567890",
+    "amount": 5000
+}
