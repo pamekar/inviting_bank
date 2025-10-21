@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 use App\Http\Resources\AccountBalanceResource;
+use App\Http\Resources\TransactionCollection;
 use App\Http\Resources\TransactionResource;
 use App\Models\User;
 
@@ -63,7 +64,7 @@ class WhatsAppAPIController extends Controller
 
         $transactions = $account->transactions()->latest()->take($limit)->get();
 
-        return TransactionResource::collection($transactions);
+        return new TransactionCollection($transactions);
     }
 
     public function transfer(WhatsAppTransferRequest $request)

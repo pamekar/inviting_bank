@@ -14,14 +14,15 @@ class AccountBalanceResource extends JsonResource
      */
     public function toArray($request)
     {
+        $balance = number_format($this->balance / 100, 2);
         return [
             'account_holder_name' => $this->user->name,
             'account_number' => $this->account_number,
             'account_type' => $this->type,
-            'balance' => $this->balance,
-            'currency' => 'USD', // Assuming USD for now, you can make this dynamic
+            'balance' => $balance,
+            'currency' => 'NGN', // Assuming USD for now, you can make this dynamic
             'description' => 'The current balance for the specified account.',
-            'chat_message' => "Hello *{$this->user->name}*!\n\nYour account balance is:\n\n*Account Number:* {$this->account_number}\n*Balance:* *{$this->balance} USD*",
+            'chat_message' => "Hello *{$this->user->name}*!\n\nYour account balance is:\n\n*Account Number:* {$this->account_number}\n*Balance:* *₦{$balance} *",
         ];
     }
 }
