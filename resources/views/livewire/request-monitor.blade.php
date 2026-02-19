@@ -10,7 +10,7 @@
         </div>
     </x-slot>
 
-    <div class="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-3 px-4 sm:px-6 lg:px-8">
+    <div class="mb-8 grid grid-cols-1 md:grid-cols-3 gap-6 px-4 sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow rounded-lg">
             <div class="px-4 py-5 sm:p-6">
                 <dt class="text-sm font-medium text-gray-500 truncate">Total Requests (24h)</dt>
@@ -58,7 +58,7 @@
                                         {{ $log->created_at->format('H:i:s') }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
                                             {{ $log->method === 'GET' ? 'bg-green-100 text-green-800' : '' }}
                                             {{ $log->method === 'POST' ? 'bg-blue-100 text-blue-800' : '' }}
                                             {{ $log->method === 'PUT' ? 'bg-yellow-100 text-yellow-800' : '' }}
@@ -72,7 +72,7 @@
                                         {{ Str::limit(parse_url($log->url, PHP_URL_PATH), 40) }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
                                             {{ $log->status_code >= 200 && $log->status_code < 300 ? 'bg-green-100 text-green-800' : '' }}
                                             {{ $log->status_code >= 300 && $log->status_code < 400 ? 'bg-blue-100 text-blue-800' : '' }}
                                             {{ $log->status_code >= 400 && $log->status_code < 500 ? 'bg-yellow-100 text-yellow-800' : '' }}
@@ -99,7 +99,7 @@
                                                     <p><strong>Full URL:</strong> {{ $log->url }}</p>
                                                     <p><strong>IP:</strong> {{ $log->ip_address }}</p>
                                                     <p><strong>User Agent:</strong> {{ $log->user_agent }}</p>
-                                                    
+
                                                     @if($log->request_body)
                                                         <div class="mt-2">
                                                             <strong>Payload:</strong>
