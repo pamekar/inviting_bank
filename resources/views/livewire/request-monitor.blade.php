@@ -10,6 +10,27 @@
         </div>
     </x-slot>
 
+    <div class="mb-8 grid grid-cols-1 gap-5 sm:grid-cols-3 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <dt class="text-sm font-medium text-gray-500 truncate">Total Requests (24h)</dt>
+                <dd class="mt-1 text-3xl font-semibold text-gray-900">{{ $metrics['total_24h'] }}</dd>
+            </div>
+        </div>
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <dt class="text-sm font-medium text-gray-500 truncate">Avg. Response Time</dt>
+                <dd class="mt-1 text-3xl font-semibold text-gray-900">{{ $metrics['avg_duration'] }}ms</dd>
+            </div>
+        </div>
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <dt class="text-sm font-medium text-gray-500 truncate">Server Errors (5xx)</dt>
+                <dd class="mt-1 text-3xl font-semibold text-red-600">{{ $metrics['error_rate'] }}</dd>
+            </div>
+        </div>
+    </div>
+
     <div class="flex flex-col">
         <div class="mb-4 px-4 sm:px-6 lg:px-8">
             <input type="text" wire:model.live.debounce.300ms="search" placeholder="Search logs (URL, Method, Status, IP)..." class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border">

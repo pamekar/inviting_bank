@@ -35,8 +35,20 @@ class RequestMonitor extends Component
             });
         }
 
+        $logs = $query->take(50)->get();
+
+        // Calculate metrics
+        $metrics = [
+            'total_24h' => RequestLog::where('created_at', '>=', now()->subDay())->count(),
+            'avg_duration' => (int) RequestLog::where('created_at', '>=', now()->subDay())->avg('duration_ms'),
+            'error_rate' => RequestLog::where('created_at', '>=', now()->subDay())
+                ->where('status_code', '>=', 500)
+                ->count(),
+        ];
+
         return view('livewire.request-monitor', [
-            'logs' => $query->take(50)->get(),
+            'logs' => $logs,
+            'metrics' => $metrics,
         ]);
     }
 }
