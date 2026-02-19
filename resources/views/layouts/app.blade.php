@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
     <style>
         :root {
             --brand-purple: #7c3aed;
@@ -137,5 +138,6 @@
         </a>
     </nav>
 </div>
+@livewireScripts
 </body>
 </html>
