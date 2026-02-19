@@ -21,6 +21,17 @@ class RequestMonitor extends Component
         }
     }
 
+    public function updateLogs()
+    {
+        // This method is called by wire:poll to refresh the component state
+    }
+
+    public function clearLogs()
+    {
+        RequestLog::truncate();
+        $this->expanded = [];
+    }
+
     #[Layout('layouts.app')]
     public function render()
     {
