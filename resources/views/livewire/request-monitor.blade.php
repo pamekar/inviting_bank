@@ -1,4 +1,8 @@
-<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8" wire:poll.5s.visible="updateLogs">
+<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8" 
+     wire:poll.5s.visible="updateLogs"
+     x-data="{ lastUpdate: '' }"
+     x-init="console.log('Request Monitor: Dashboard initialized');"
+     @logs-updated.window="console.log('Request Monitor: Logs refreshed at ' + $event.detail.timestamp + '. Total logs in DB: ' + $event.detail.count); lastUpdate = $event.detail.timestamp">
     <x-slot name="header">
         <div class="flex justify-between items-center w-full">
             <div class="flex items-center">

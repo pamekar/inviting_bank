@@ -23,7 +23,10 @@ class RequestMonitor extends Component
 
     public function updateLogs()
     {
-        // This method is called by wire:poll to refresh the component state
+        $this->dispatch('logs-updated', [
+            'count' => RequestLog::count(),
+            'timestamp' => now()->toTimeString()
+        ]);
     }
 
     public function clearLogs()
