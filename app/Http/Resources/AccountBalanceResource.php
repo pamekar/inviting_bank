@@ -34,8 +34,11 @@ class AccountBalanceResource extends JsonResource
      */
     public function with($request)
     {
+        $balance = number_format($this->user->accounts->sum('balance') / 100, 2);
+//        $balance = number_format($this->balance / 100, 2);
+
         return [
-            'chat_message' => "Hello *{$this->user->name}*!\n\nYour account balance is:\n\n*Account Number:* {$this->account_number}\n*Balance:* *₦{$this->balance}*",
+            'chat_message' => "Hello *{$this->user->name}*!\n\nYour account balance is:\n\n*Account Number:* {$this->account_number}\n*Balance:* *₦{$balance}*",
         ];
     }
 }

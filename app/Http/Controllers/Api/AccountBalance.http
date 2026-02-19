@@ -1,26 +1,26 @@
 ### Get Account Balance
-POST http://inviting.test/api/whatsapp/balance
+POST {{url}}/api/whatsapp/balance
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer {{token}}
 
 {
-    "phone_number": "07038606396"
+    "phone_number": "2347038606396"
 }
 
 ### Get Transaction History
-POST http://inviting.test/api/whatsapp/transactions
+POST {{url}}/api/whatsapp/transactions
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer {{token}}
 
 {
-    "phone_number": "07038606396",
+    "phone_number": "2347038606396",
     "limit": 5
 }
 
 ### Initiate a Transfer
-POST http://inviting.test/api/whatsapp/transfer
+POST {{url}}/api/whatsapp/transfer
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer {{token}}
@@ -31,8 +31,8 @@ Authorization: Bearer {{token}}
     "amount": 100.50
 }
 
-### Initiate a Bill Payment
-POST http://inviting.test/api/whatsapp/bill-payment
+#l## Initiate a Bill Payment
+POST {{url}}/api/whatsapp/bill-payment
 Content-Type: application/json
 Accept: application/json
 Authorization: Bearer {{token}}

@@ -24,6 +24,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/transactions', [DashboardController::class, 'transactions'])->name('transactions');
     Route::get('/accounts', [DashboardController::class, 'accounts'])->name('accounts');
     Route::get('/statistics', [DashboardController::class, 'statistics'])->name('statistics');
+    Route::get('/logs', \App\Livewire\RequestMonitor::class)->name('logs');
 });
 
 

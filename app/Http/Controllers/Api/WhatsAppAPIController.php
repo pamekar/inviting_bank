@@ -28,7 +28,6 @@ class WhatsAppAPIController extends Controller
         Log::info('WhatsApp API: getBalance request received', ['request' => $request->all()]);
         $user = User::where('phone_number', $request->phone_number)->firstOrFail();
 
-        Log::info(json_encode($user));
         if (!$user) {
             return response()->json([
                 'error' => 'UserNotFound',

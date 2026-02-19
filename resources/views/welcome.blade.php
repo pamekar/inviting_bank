@@ -2,7 +2,7 @@
     <!-- Hero Section -->
     <div class="relative bg-gray-800 text-white overflow-hidden">
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e7b?q=80&w=2070&auto=format&fit=crop" alt="A happy couple reviewing their finances together on a laptop." class="w-full h-full object-cover">
+            <img src="https://www.synchrony.com/syc/img/hero-blog-bank-7-tips-to-save-5k-in-year-2400x1000.jpg" alt="A happy couple reviewing their finances together on a laptop." class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gray-900 opacity-60"></div>
         </div>
         <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
