@@ -25,7 +25,7 @@
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
             <a href="/" class="flex items-center space-x-2">
-                <img src="{{ asset('img/logo.png') }}" alt="Inviting Bank Logo" class="h-16">
+                <img src="{{ asset('images/logo.png') }}" alt="Inviting Bank Logo" class="h-16">
             </a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="{{ route('about') }}" class="text-gray-600 hover:text-purple-700">About Us</a>
@@ -70,7 +70,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <img src="{{ asset('img/logo.png') }}" alt="Inviting Bank Logo" class="h-16">
+                    <img src="{{ asset('images/logo.png') }}" alt="Inviting Bank Logo" class="h-16">
                     <p class="mt-2 text-gray-400">Your partner in growth.</p>
                 </div>
                 <div>

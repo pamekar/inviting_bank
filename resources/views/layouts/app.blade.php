@@ -38,7 +38,7 @@
          class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white p-6 z-30"
          @click.away="sidebarOpen = false">
 
-        <img src="{{ asset('img/logo.png') }}" alt="Inviting Bank Logo" class="h-16 mb-8">
+        <img src="{{ asset('images/logo.png') }}" alt="Inviting Bank Logo" class="h-16 mb-8">
 
         <nav class="flex flex-col space-y-4">
             <a href="{{ route('dashboard') }}" class="flex items-center p-2 text-base font-normal text-white rounded-lg hover:bg-gray-700">

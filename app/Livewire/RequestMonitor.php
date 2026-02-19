@@ -33,6 +33,11 @@ class RequestMonitor extends Component
     {
         RequestLog::truncate();
         $this->expanded = [];
+
+        $this->dispatch('logs-updated', [
+            'count' => 0,
+            'timestamp' => now()->toTimeString()
+        ]);
     }
 
     #[Layout('layouts.app')]
