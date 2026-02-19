@@ -11,6 +11,9 @@
     </x-slot>
 
     <div class="flex flex-col">
+        <div class="mb-4 px-4 sm:px-6 lg:px-8">
+            <input type="text" wire:model.live.debounce.300ms="search" placeholder="Search logs (URL, Method, Status, IP)..." class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border">
+        </div>
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

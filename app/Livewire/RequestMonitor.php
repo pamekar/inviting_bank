@@ -10,6 +10,7 @@ use Livewire\Attributes\Layout;
 class RequestMonitor extends Component
 {
     public $expanded = [];
+    public $search = '';
 
     public function toggleExpand($id)
     {
@@ -23,8 +24,19 @@ class RequestMonitor extends Component
     #[Layout('layouts.app')]
     public function render()
     {
+        $query = RequestLog::latest();
+
+        if ($this->search) {
+            $query->where(function ($q) {
+                $q->where('url', 'like', '%' . $this->search . '%')
+                  ->orWhere('method', 'like', '%' . $this->search . '%')
+                  ->orWhere('status_code', 'like', '%' . $this->search . '%')
+                  ->orWhere('ip_address', 'like', '%' . $this->search . '%');
+            });
+        }
+
         return view('livewire.request-monitor', [
-            'logs' => RequestLog::latest()->take(50)->get(),
+            'logs' => $query->take(50)->get(),
         ]);
     }
 }

@@ -91,7 +91,8 @@
                 </div>
             </div>
             <div class="mt-8 border-t border-gray-700 pt-8 text-center text-gray-400">
-                © {{ date('Y') }} Inviting Bank. All Rights Reserved.
+                <p>&copy; {{ date('Y') }} Inviting Bank. All Rights Reserved.</p>
+                <p class="mt-2 text-sm text-gray-500">This is just a demo bank to easily simulate the integration of chat AI solutions into fintech solutions.</p>
             </div>
         </div>
     </footer>
